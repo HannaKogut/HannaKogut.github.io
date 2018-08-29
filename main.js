@@ -186,9 +186,14 @@ var AppItemsComponent = /** @class */ (function () {
         this.isActive = !this.isActive;
     };
     AppItemsComponent.prototype.ngOnInit = function () {
-        var names = localStorage.getItem('items');
-        var parsedData = JSON.parse(names);
-        this.items = parsedData;
+        if (localStorage.getItem('items') === null) {
+            this.items = [];
+        }
+        else {
+            var names = localStorage.getItem('items');
+            var parsedData = JSON.parse(names);
+            this.items = parsedData;
+        }
     };
     AppItemsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
